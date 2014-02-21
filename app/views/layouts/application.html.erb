@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NinetyNineCats</title>
+    <title>Music App</title>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= csrf_meta_tags %>
   </head>
@@ -10,19 +10,9 @@
   <div class="container content-main">
     <nav class="navbar navbar-default">
       <div class="navbar-header">
-        <%= link_to 'Ninety-Nine Cats', '/', class: 'navbar-brand' %>
+        <%= link_to 'Music App', '/', class: 'navbar-brand' %>
       </div>
       <div class="navbar-right user-controls">
-        <% if current_user %>
-          <p class="current-user-name">
-            Signed-in as <%= current_user.user_name %>
-          </p>
-          <%= button_to 'Sign Out', session_url,
-              method: :delete, class: 'btn btn-info btn-sign-out' %>
-        <% else %>
-          <%= link_to 'Sign In', new_session_url, class: 'btn btn-success' %>
-          <%= link_to 'Sign Up', new_user_url, class: 'btn btn-info' %>
-        <% end %>
       </div>
     </nav>
 
