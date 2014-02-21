@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include SessionsHelper
 
   def new
     @user = User.new
@@ -9,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = "Account created!"
+      sign_in_user(@user)
       redirect_to '/'
     else
       flash.now[:errors] = @user.errors.full_messages
