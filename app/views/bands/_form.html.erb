@@ -1,0 +1,16 @@
+<%= render 'shared/errors' %>
+
+<form action="<%= band_form_url(band) %>" method="post" accept-charset="utf-8">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <% if band.persisted? %>
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+
+  <div class="form-group">
+    <label for="band_name">Name</label>
+    <input type="text" name="band[name]"
+           id="band_name" value="<%= band.name %>">
+  </div>
+
+  <input type="submit" value="<%= band_submit_text(band) %>">
+</form>

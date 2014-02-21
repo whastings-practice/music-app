@@ -1,0 +1,25 @@
+<div class="col-md-12">
+  <h1><%= @band.name %></h1>
+
+  <h2>Albums</h2>
+  <ul class="list-group">
+    <% @albums.each do |album| %>
+      <li class="list-group-item">
+        <%= album.name %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h2>Tracks</h2>
+  <ul class="list-group">
+    <% @tracks.each do |track| %>
+      <li class="list-group-item">
+        <%= track.name %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to 'Edit Band', edit_band_url(@band), class: 'btn btn-info' %>
+  <%= button_to 'Delete Band', band_url(@band),
+      method: :delete, class: 'btn btn-danger' %>
+</div>
