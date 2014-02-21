@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Account created!"
       redirect_to '/'
     else
-      flash[:errors] = @user.errors.full_messages
+      flash.now[:errors] = @user.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
