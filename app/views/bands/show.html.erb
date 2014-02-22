@@ -5,7 +5,7 @@
   <ul class="list-group">
     <% @albums.each do |album| %>
       <li class="list-group-item">
-        <%= album.name %>
+        <%= link_to album.name, album_url(album) %>
       </li>
     <% end %>
   </ul>
@@ -22,4 +22,5 @@
   <%= link_to 'Edit Band', edit_band_url(@band), class: 'btn btn-info' %>
   <%= button_to 'Delete Band', band_url(@band),
       method: :delete, class: 'btn btn-danger' %>
+  <%= link_to 'Add Album', new_band_album_url(@band), class: 'btn btn-success' %>
 </div>

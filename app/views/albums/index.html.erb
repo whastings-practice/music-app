@@ -1,0 +1,11 @@
+<div class="col-md-12">
+  <h1><%= @band.name %>'s Albums</h1>
+
+  <ul class="list-group">
+    <% @albums.each do |album| %>
+      <li class="list-group-item">
+        <%= link_to album.name, album_url(album) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -6,6 +6,10 @@ MusicApp::Application.routes.draw do
 
   resource :session, only:[:new, :create, :destroy]
 
-  resources :bands
+  resources :bands do
+    resources :albums, only: [:index, :new, :create]
+  end
+
+  resources :albums, only: [:show, :edit, :update, :destroy]
 
 end
