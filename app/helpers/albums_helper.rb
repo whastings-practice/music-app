@@ -14,4 +14,12 @@ module AlbumsHelper
   def album_type_selected(album, type)
     album.album_type == type ? "checked" : ""
   end
+
+  def album_type_description(album)
+    if album.album_type == 'studio'
+      "Recorded in studio."
+    elsif album.album_type == 'live'
+      "Performed live."
+    end
+  end
 end

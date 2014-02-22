@@ -14,7 +14,7 @@
   <ul class="list-group">
     <% @tracks.each do |track| %>
       <li class="list-group-item">
-        <%= track.name %>
+        <%= link_to track.name, track_url(track) %>
       </li>
     <% end %>
   </ul>

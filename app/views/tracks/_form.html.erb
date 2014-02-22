@@ -1,0 +1,50 @@
+<%= render 'shared/errors' %>
+
+<form action="<%= track_form_url(track, album) %>" method="post" accept-charset="utf-8">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <% if track.persisted? %>
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="track_name">Name</label>
+        <input type="text" name="track[name]"
+               id="track_name" value="<%= track.name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="track_album">Album</label>
+        <select name="track[album_id]" id="track_album">
+          <option></option>
+          <% albums.each do |album| %>
+            <option value="<%= album.id %>"<%= track_album_selected(track, album) %>>
+              <%= album.name %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="track[bonus]"
+                   value="true"<%= track_bonus_selected(track) %>>
+            Bonus Track?
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="track_lyrics">Lyrics</label>
+      <textarea rows="6"
+                id="track_lyrics"
+                name="track[lyrics]"><%= track.lyrics %></textarea>
+    </div>
+  </div>
+
+
+  <input type="submit" value="<%= track_submit_text(track) %>"
+         class="btn btn-success">
+</form>
