@@ -21,7 +21,7 @@
   margin-top: 20px;
 }
 
-.user-controls .button_to {
+.button_to {
   float: left;
   margin-right: 5px;
 }
@@ -36,6 +36,9 @@ textarea {
 
 .user-controls {
   padding: 10px;
+  .button_to {
+    float: right;
+  }
   .button_to {
     float: right;
   }
