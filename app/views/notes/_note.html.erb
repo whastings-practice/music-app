@@ -1,0 +1,5 @@
+<li class="list-group-item clearfix">
+  <%= simple_format note.body %>
+  <p><strong>By <%= note.user.email %></strong> on <%= note.created_at %></p>
+  <%= button_to 'Delete Note', note_url(note), method: :delete %>
+</li>

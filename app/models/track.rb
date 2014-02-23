@@ -18,6 +18,14 @@ class Track < ActiveRecord::Base
   belongs_to :album
   has_one :band, through: :album
 
+  has_many(
+    :notes,
+    primary_key: :id,
+    foreign_key: :track_id,
+    class_name: "Note",
+    dependent: :destroy
+  )
+
   def bonus?
     self.bonus
   end

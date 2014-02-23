@@ -16,6 +16,14 @@ class User < ActiveRecord::Base
 
   before_validation :check_token
 
+  has_many(
+    :notes,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: "Note",
+    dependent: :destroy
+  )
+
   def self.new_session_token
     SecureRandom.urlsafe_base64(16)
   end
