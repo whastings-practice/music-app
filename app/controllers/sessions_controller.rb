@@ -11,6 +11,11 @@ class SessionsController < ApplicationController
       params[:session][:password]
     )
     if user
+      unless user.activated?
+        flash.now[:errors] = ['Your account needs to be activated.']
+        render :new
+        return
+      end
       sign_in_user(user)
       redirect_to '/'
     else
