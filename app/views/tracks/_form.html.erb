@@ -1,6 +1,7 @@
 <%= render 'shared/errors' %>
 
-<form action="<%= track_form_url(track, album) %>" method="post" accept-charset="utf-8">
+<form action="<%= track_form_url(track, selected_album) %>"
+      method="post" accept-charset="utf-8">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <% if track.persisted? %>
     <input type="hidden" name="_method" value="PATCH">
@@ -19,7 +20,8 @@
         <select name="track[album_id]" id="track_album">
           <option></option>
           <% albums.each do |album| %>
-            <option value="<%= album.id %>"<%= track_album_selected(track, album) %>>
+            <option value="<%= album.id %>"
+                    <%= track_album_selected(album, selected_album) %>>
               <%= album.name %>
             </option>
           <% end %>

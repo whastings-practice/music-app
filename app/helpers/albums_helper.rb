@@ -7,8 +7,8 @@ module AlbumsHelper
     album.persisted? ? "Edit Album" : "Add Album"
   end
 
-  def album_band_selected(album, band)
-    album.band_id == band.id ? "selected" : ""
+  def album_band_selected(band, selected_band)
+    band.id == selected_band.id ? "selected" : ""
   end
 
   def album_type_selected(album, type)

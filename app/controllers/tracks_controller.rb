@@ -11,7 +11,6 @@ class TracksController < ApplicationController
   end
 
   def new
-    @track = Track.new
     render :new
   end
 
@@ -27,12 +26,10 @@ class TracksController < ApplicationController
   end
 
   def edit
-    @track = Track.find(params[:id])
     render :edit
   end
 
   def update
-    @track = Track.find(params[:id])
     if @track.update_attributes(track_params)
       flash[:notice] = "Track updated!"
       redirect_to track_url(@track)
@@ -51,8 +48,13 @@ class TracksController < ApplicationController
   private
 
   def load_track_variables
+    if params[:id]
+      @track = Track.find(params[:id])
+    else
+      @track = Track.new
+    end
     @albums = Album.all
-    @album = Album.find(params[:album_id]) if params[:album_id]
+    @selected_album = (@track.album || Album.find(params[:album_id]))
   end
 
   def track_params

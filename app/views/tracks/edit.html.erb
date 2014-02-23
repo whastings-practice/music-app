@@ -1,5 +1,6 @@
 <div class="col-md-12">
   <h1>Edit Track <%= @track.name %></h1>
 
-  <%= render 'form', track: @track, albums: @albums, album: @album %>
+  <%= render 'form', track: @track, albums: @albums,
+                     selected_album: @selected_album %>
 </div>

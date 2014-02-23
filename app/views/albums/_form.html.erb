@@ -17,7 +17,8 @@
     <select name="album[band_id]" id="album_band">
       <option></option>
       <% bands.each do |band| %>
-        <option value="<%= band.id %>"<%= album_band_selected(album, band) %>>
+        <option value="<%= band.id %>"
+                <%= album_band_selected(band, selected_band) %>>
           <%= band.name %>
         </option>
       <% end %>

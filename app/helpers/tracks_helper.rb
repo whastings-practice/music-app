@@ -7,8 +7,8 @@ module TracksHelper
     track.persisted? ? "Edit Track" : "Add Track"
   end
 
-  def track_album_selected(track, album)
-    track.album_id == album.id ? "selected" : ""
+  def track_album_selected(album, selected_album)
+    album.id == selected_album.id ? "selected" : ""
   end
 
   def track_bonus_selected(track)
