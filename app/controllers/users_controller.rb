@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   include SessionsHelper
 
+  before_action :require_admin, only: [:make_admin, :index]
+
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
     render :new
@@ -25,6 +31,12 @@ class UsersController < ApplicationController
       sign_in_user(user)
     end
     redirect_to root_url
+  end
+
+  def make_admin
+    user = User.find(params[:id])
+    user.make_admin!
+    redirect_to users_url
   end
 
   private

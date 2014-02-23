@@ -1,4 +1,7 @@
 class BandsController < ApplicationController
+  include SessionsHelper
+
+  before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @bands = Band.all

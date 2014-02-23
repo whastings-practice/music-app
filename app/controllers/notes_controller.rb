@@ -1,7 +1,11 @@
 class NotesController < ApplicationController
   include SessionsHelper
+  include NotesHelper
 
   before_action :require_signed_in
+  before_action only: [:destroy] do
+    user_can_delete_note?(Note.find(params[:id]))
+  end
 
   def create
     @note = Note.new(note_params)

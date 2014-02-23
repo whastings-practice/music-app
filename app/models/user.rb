@@ -10,6 +10,7 @@
 #  updated_at       :datetime
 #  activated        :boolean          default(FALSE), not null
 #  activation_token :string(255)
+#  admin            :boolean          default(FALSE), not null
 #
 
 class User < ActiveRecord::Base
@@ -56,6 +57,15 @@ class User < ActiveRecord::Base
 
   def activate!
     self.activated = true
+    self.save!
+  end
+
+  def admin?
+    self.admin
+  end
+
+  def make_admin!
+    self.admin = true
     self.save!
   end
 

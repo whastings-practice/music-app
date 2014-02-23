@@ -9,5 +9,8 @@
     <% end %>
   </ul>
 
-  <%= link_to 'Add Band', new_band_url, class: 'btn btn-success' %>
+  <% if user_is_admin? %>
+    <%= link_to 'Add Band', new_band_url, class: 'btn btn-success' %>
+    <%= link_to 'View Users', users_url, class: 'btn btn-info' %>
+  <% end %>
 </div>

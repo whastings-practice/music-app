@@ -19,8 +19,10 @@
     <% end %>
   </ul>
 
-  <%= link_to 'Edit Band', edit_band_url(@band), class: 'btn btn-info' %>
-  <%= button_to 'Delete Band', band_url(@band),
-      method: :delete, class: 'btn btn-danger' %>
-  <%= link_to 'Add Album', new_band_album_url(@band), class: 'btn btn-success' %>
+  <% if user_is_admin? %>
+    <%= link_to 'Edit Band', edit_band_url(@band), class: 'btn btn-info' %>
+    <%= button_to 'Delete Band', band_url(@band),
+        method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'Add Album', new_band_album_url(@band), class: 'btn btn-success' %>
+  <% end %>
 </div>

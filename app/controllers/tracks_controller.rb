@@ -1,4 +1,7 @@
 class TracksController < ApplicationController
+  include SessionsHelper
+
+  before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
   before_action :load_track_variables, only: [:new, :create, :edit, :update]
 
   def show

@@ -22,8 +22,10 @@
     </ul>
   <% end %>
 
-  <%= link_to 'Edit Track', edit_track_url(@track),
-      class: 'btn btn-info' %>
-  <%= button_to 'Delete Track', track_url(@track),
-      method: :delete, class: 'btn btn-danger' %>
+  <% if user_is_admin? %>
+    <%= link_to 'Edit Track', edit_track_url(@track),
+        class: 'btn btn-info' %>
+    <%= button_to 'Delete Track', track_url(@track),
+        method: :delete, class: 'btn btn-danger' %>
+  <% end %>
 </div>

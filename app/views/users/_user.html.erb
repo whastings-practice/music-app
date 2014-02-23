@@ -1,0 +1,9 @@
+<li class="list-group-item">
+  <%= user.email %>
+  <% unless user.admin? %>
+    <%= button_to 'Make Administrator',
+                  make_admin_user_url(user),
+                  method: :patch,
+                  class: 'btn btn-info' %>
+  <% end %>
+</li>

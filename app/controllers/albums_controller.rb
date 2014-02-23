@@ -1,4 +1,8 @@
 class AlbumsController < ApplicationController
+  include SessionsHelper
+
+  before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     @albums = Album.where(band_id: params[:band_id])
     @band = Band.find(params[:band_id])
